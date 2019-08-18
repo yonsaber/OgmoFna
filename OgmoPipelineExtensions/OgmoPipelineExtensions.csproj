@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{15EC8403-7331-4065-AE02-EF3155CE25D0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OgmoPipelineExtensions</RootNamespace>
+    <AssemblyName>OgmoPipelineExtensions</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="MonoGame.Framework">
+      <HintPath>$(MSBuildExtensionsPath)\MonoGame\v3.0\Tools\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework.Content.Pipeline">
+      <HintPath>$(MSBuildExtensionsPath)\MonoGame\v3.0\Tools\MonoGame.Framework.Content.Pipeline.dll</HintPath>
+    </Reference>
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ColorHelper.cs" />
+    <Compile Include="ContentItems\Layers\GridLayerContent.cs" />
+    <Compile Include="ContentItems\Layers\LayerContent.cs" />
+    <Compile Include="ContentItems\Layers\LayerContentWriter.cs" />
+    <Compile Include="ContentItems\Layers\ObjectLayerContent.cs" />
+    <Compile Include="ContentItems\Layers\Settings\GridLayerSettingsContent.cs" />
+    <Compile Include="ContentItems\Layers\Settings\LayerSettingsContent.cs" />
+    <Compile Include="ContentItems\Layers\Settings\LayerSettingsContentParser.cs" />
+    <Compile Include="ContentItems\Layers\Settings\LayerSettingsContentWriter.cs" />
+    <Compile Include="ContentItems\Layers\Settings\LayerSettingsNodeReader.cs" />
+    <Compile Include="ContentItems\Layers\Settings\ObjectLayerSettingsContent.cs" />
+    <Compile Include="ContentItems\Layers\Settings\TileLayerSettingsContent.cs" />
+    <Compile Include="ContentItems\Layers\TileContent.cs" />
+    <Compile Include="ContentItems\Layers\TileLayerContent.cs" />
+    <Compile Include="ContentItems\LevelContent.cs" />
+    <Compile Include="ContentItems\NodeContent.cs" />
+    <Compile Include="ContentItems\ObjectContent.cs" />
+    <Compile Include="ContentItems\ObjectTemplateContent.cs" />
+    <Compile Include="ContentItems\OelContent.cs" />
+    <Compile Include="ContentItems\OepContent.cs" />
+    <Compile Include="ContentItems\ProjectContent.cs" />
+    <Compile Include="ContentItems\ProjectSettingsContent.cs" />
+    <Compile Include="ContentItems\TilesetContent.cs" />
+    <Compile Include="ContentItems\Values\BooleanValueContent.cs" />
+    <Compile Include="ContentItems\Values\BooleanValueTemplateContent.cs" />
+    <Compile Include="ContentItems\Values\IntegerValueContent.cs" />
+    <Compile Include="ContentItems\Values\IntegerValueTemplateContent.cs" />
+    <Compile Include="ContentItems\Values\NumberValueContent.cs" />
+    <Compile Include="ContentItems\Values\NumberValueTemplateContent.cs" />
+    <Compile Include="ContentItems\Values\StringValueContent.cs" />
+    <Compile Include="ContentItems\Values\StringValueTemplateContent.cs" />
+    <Compile Include="ContentItems\Values\ValueContent.cs" />
+    <Compile Include="ContentItems\Values\ValueContentOfT.cs" />
+    <Compile Include="ContentItems\Values\ValueContentTemplateParser.cs" />
+    <Compile Include="ContentItems\Values\ValueContentTemplateWriter.cs" />
+    <Compile Include="ContentItems\Values\ValueContentWriter.cs" />
+    <Compile Include="ContentItems\Values\ValueNodeReader.cs" />
+    <Compile Include="ContentItems\Values\ValueTemplate.cs" />
+    <Compile Include="ContentItems\Values\ValueTemplateOfTContent.cs" />
+    <Compile Include="OelImporter.cs" />
+    <Compile Include="OelProcessor.cs" />
+    <Compile Include="OelWriter.cs" />
+    <Compile Include="OepImporter.cs" />
+    <Compile Include="OepProcessor.cs" />
+    <Compile Include="OepWriter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
