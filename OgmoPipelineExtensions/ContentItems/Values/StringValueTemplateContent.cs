@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
+﻿using System.Globalization;
 using System.Xml;
 
-namespace OgmoXNAPipelineExtensions.ContentItems.Values
+namespace OgmoPipelineExtension.ContentItems.Values
 {
     public class StringValueTemplateContent : ValueTemplateContent<string>
     {
@@ -19,9 +15,9 @@ namespace OgmoXNAPipelineExtensions.ContentItems.Values
             : base(node)
         {
             if (node.Attributes["default"] != null)
-                this.Default = node.Attributes["default"].Value;
+                Default = node.Attributes["default"].Value;
             if (node.Attributes["maxChars"] != null)
-                this.MaxChars = int.Parse(node.Attributes["maxChars"].Value, CultureInfo.InvariantCulture);
+                MaxChars = int.Parse(node.Attributes["maxChars"].Value, CultureInfo.InvariantCulture);
         }
     }
 }

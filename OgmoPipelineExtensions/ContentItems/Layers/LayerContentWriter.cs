@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Compiler;
-using OgmoXNAPipelineExtensions.ContentItems.Values;
+using OgmoPipelineExtension.ContentItems.Values;
 
-namespace OgmoXNAPipelineExtensions.ContentItems.Layers
+namespace OgmoPipelineExtension.ContentItems.Layers
 {
     static class LayerContentWriter
     {
@@ -89,7 +85,7 @@ namespace OgmoXNAPipelineExtensions.ContentItems.Layers
                         writer.Write(obj.Nodes.Count);
                         if (obj.Nodes.Count > 0)
                         {
-                            foreach (OgmoXNAPipelineExtensions.ContentItems.NodeContent nodeContent in obj.Nodes)
+                            foreach (OgmoPipelineExtension.ContentItems.NodeContent nodeContent in obj.Nodes)
                                 writer.Write(nodeContent.Position);
                         }
                     }

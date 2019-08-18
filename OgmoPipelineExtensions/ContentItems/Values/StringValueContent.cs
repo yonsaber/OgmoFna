@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Xml;
 
-namespace OgmoXNAPipelineExtensions.ContentItems.Values
+namespace OgmoPipelineExtension.ContentItems.Values
 {
     public class StringValueContent : ValueContent<string>
     {
@@ -12,11 +9,17 @@ namespace OgmoXNAPipelineExtensions.ContentItems.Values
         {
         }
 
+        public StringValueContent(XmlNode node)
+            : base(node)
+        {
+
+        }
+
         public StringValueContent(string name, string value)
             : base()
         {
-            this.Name = name;
-            this.Value = value;
+            Name = name;
+            Value = value;
         }
     }
 }

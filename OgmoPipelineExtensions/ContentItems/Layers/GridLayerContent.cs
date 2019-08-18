@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Xml;
 using Microsoft.Xna.Framework;
-using OgmoXNAPipelineExtensions.ContentItems.Layers.Settings;
-using System.IO;
-using System.IO.Compression;
+using OgmoPipelineExtension.ContentItems.Layers.Settings;
 
-namespace OgmoXNAPipelineExtensions.ContentItems.Layers
+namespace OgmoPipelineExtension.ContentItems.Layers
 {
     public class GridLayerContent : LayerContent
     {
@@ -25,7 +21,7 @@ namespace OgmoXNAPipelineExtensions.ContentItems.Layers
         {
             if (settings.ExportAsObjects)
             {
-                this.RectangleData = new List<Rectangle>();
+                RectangleData = new List<Rectangle>();
                 foreach (XmlNode rectNode in node.SelectNodes("rect"))
                 {
                     Rectangle rect = Rectangle.Empty;
@@ -38,7 +34,7 @@ namespace OgmoXNAPipelineExtensions.ContentItems.Layers
                     if (rectNode.Attributes["h"] != null)
                         rect.Height = int.Parse(rectNode.Attributes["h"].Value, CultureInfo.InvariantCulture);
                     if (rect != Rectangle.Empty)
-                        this.RectangleData.Add(rect);
+                        RectangleData.Add(rect);
                 }
             }
             else
@@ -48,7 +44,7 @@ namespace OgmoXNAPipelineExtensions.ContentItems.Layers
                 // Convert this string to byte data.
                 byte[] data = System.Text.Encoding.UTF8.GetBytes(rawData);
                 // Convert byte data to base 64 string.
-                this.RawData = Convert.ToBase64String(data);
+                RawData = Convert.ToBase64String(data);
             }
         }
     }

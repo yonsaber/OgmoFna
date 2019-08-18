@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml;
+﻿using System.Xml;
 
-namespace OgmoXNAPipelineExtensions.ContentItems.Values
+namespace OgmoPipelineExtension.ContentItems.Values
 {
     /// <summary>
     /// A strongly typed <see cref="ValueContent"/> object.
@@ -12,6 +8,11 @@ namespace OgmoXNAPipelineExtensions.ContentItems.Values
     /// <typeparam name="T">The value type the object holds.</typeparam>
     public abstract class ValueContent<T> : ValueContent
     {
+        protected ValueContent()
+            : base()
+        {
+        }
+
         /// <summary>
         /// Creates an instance of <see cref="ValueContent(XmlNode)"/>.
         /// </summary>
@@ -20,7 +21,7 @@ namespace OgmoXNAPipelineExtensions.ContentItems.Values
             : base()
         {
             if (node.Attributes["name"] != null)
-                this.Name = node.Attributes["name"].Value;
+                Name = node.Attributes["name"].Value;
         }
 
         /// <summary>

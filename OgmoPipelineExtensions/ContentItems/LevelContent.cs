@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Xml;
 using Microsoft.Xna.Framework.Content.Pipeline;
-using OgmoXNAPipelineExtensions.ContentItems.Values;
-using System.Reflection;
-using OgmoXNAPipelineExtensions.ContentItems.Layers.Settings;
-using OgmoXNAPipelineExtensions.ContentItems.Layers;
+using OgmoPipelineExtension.ContentItems.Values;
+using OgmoPipelineExtension.ContentItems.Layers.Settings;
+using OgmoPipelineExtension.ContentItems.Layers;
 
-namespace OgmoXNAPipelineExtensions.ContentItems
+namespace OgmoPipelineExtension.ContentItems
 {
     public class LevelContent
     {
@@ -27,7 +24,7 @@ namespace OgmoXNAPipelineExtensions.ContentItems
 
         public LevelContent(ProjectContent project, XmlDocument document)
         {
-            this.Project = project;
+            Project = project;
             XmlNode levelNode = document["level"];
             // Level values/attributes
             foreach (ValueTemplateContent value in project.Values)
@@ -36,21 +33,21 @@ namespace OgmoXNAPipelineExtensions.ContentItems
                 if ((attribute = levelNode.Attributes[value.Name]) != null)
                 {
                     if (value is BooleanValueTemplateContent)
-                        this.Values.Add(new BooleanValueContent(value.Name, bool.Parse(attribute.Value)));
+                        Values.Add(new BooleanValueContent(value.Name, bool.Parse(attribute.Value)));
                     else if (value is IntegerValueTemplateContent)
-                        this.Values.Add(new IntegerValueContent(value.Name, 
+                        Values.Add(new IntegerValueContent(value.Name, 
                             int.Parse(attribute.Value, CultureInfo.InvariantCulture)));
                     else if (value is NumberValueTemplateContent)
-                        this.Values.Add(new NumberValueContent(value.Name, 
+                        Values.Add(new NumberValueContent(value.Name, 
                             float.Parse(attribute.Value, CultureInfo.InvariantCulture)));
                     else if (value is StringValueTemplateContent)
-                        this.Values.Add(new StringValueContent(value.Name, attribute.Value));
+                        Values.Add(new StringValueContent(value.Name, attribute.Value));
                 }
             }
             // Height
-            this.Height = int.Parse(levelNode.SelectSingleNode("height").InnerText, CultureInfo.InvariantCulture);
+            Height = int.Parse(levelNode.SelectSingleNode("height").InnerText, CultureInfo.InvariantCulture);
             // Width
-            this.Width = int.Parse(levelNode.SelectSingleNode("width").InnerText, CultureInfo.InvariantCulture);
+            Width = int.Parse(levelNode.SelectSingleNode("width").InnerText, CultureInfo.InvariantCulture);
             // Layers
             // Here we'll construct an XPath query of all possible layer names so we can just extract the nodes all 
             // at once.
@@ -71,20 +68,20 @@ namespace OgmoXNAPipelineExtensions.ContentItems
                     GridLayerSettingsContent settings = layerSettings as GridLayerSettingsContent;
                     GridLayerContent gridLayer = new GridLayerContent(layerNode, this, settings);
                     if (gridLayer != null)
-                        this.Layers.Add(gridLayer);
+                        Layers.Add(gridLayer);
                 }
                 else if (layerSettings is TileLayerSettingsContent)
                 {
                     TileLayerSettingsContent settings = layerSettings as TileLayerSettingsContent;
                     TileLayerContent tileLayer = new TileLayerContent(layerNode, this, settings);
                     if (tileLayer != null)
-                        this.Layers.Add(tileLayer);
+                        Layers.Add(tileLayer);
                 }
                 else if (layerSettings is ObjectLayerSettingsContent)
                 {
                     ObjectLayerContent objectLayer = new ObjectLayerContent(layerNode, this);
                     if(objectLayer != null)
-                       this.Layers.Add(objectLayer);
+                       Layers.Add(objectLayer);
                 }
             }
         }

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml;
+﻿using System.Xml;
 using System.Globalization;
 
-namespace OgmoXNAPipelineExtensions.ContentItems
+namespace OgmoPipelineExtension.ContentItems
 {
     public class ProjectSettingsContent
     {
@@ -19,9 +15,9 @@ namespace OgmoXNAPipelineExtensions.ContentItems
 
         public ProjectSettingsContent()
         {
-            this.Height = 480;
-            this.Width = 640;
-            this.WorkingDirectory = "gfx";
+            Height = 480;
+            Width = 640;
+            WorkingDirectory = "gfx";
         }
 
         public ProjectSettingsContent(XmlNode node)
@@ -31,25 +27,25 @@ namespace OgmoXNAPipelineExtensions.ContentItems
                 switch (childNode.Name)
                 {
                     case "defaultHeight":
-                        this.Height = int.Parse(childNode.InnerText, CultureInfo.InvariantCulture);
+                        Height = int.Parse(childNode.InnerText, CultureInfo.InvariantCulture);
                         break;
                     case "maxHeight":
-                        this.MaxHeight = int.Parse(childNode.InnerText, CultureInfo.InvariantCulture);
+                        MaxHeight = int.Parse(childNode.InnerText, CultureInfo.InvariantCulture);
                         break;
                     case "maxWidth":
-                        this.MaxWidth = int.Parse(childNode.InnerText, CultureInfo.InvariantCulture);
+                        MaxWidth = int.Parse(childNode.InnerText, CultureInfo.InvariantCulture);
                         break;
                     case "minHeight":
-                        this.MinHeight = int.Parse(childNode.InnerText, CultureInfo.InvariantCulture);
+                        MinHeight = int.Parse(childNode.InnerText, CultureInfo.InvariantCulture);
                         break;
                     case "minWidth":
-                        this.MinWidth = int.Parse(childNode.InnerText, CultureInfo.InvariantCulture);
+                        MinWidth = int.Parse(childNode.InnerText, CultureInfo.InvariantCulture);
                         break;
                     case "defaultWidth":
-                        this.Width = int.Parse(childNode.InnerText, CultureInfo.InvariantCulture);
+                        Width = int.Parse(childNode.InnerText, CultureInfo.InvariantCulture);
                         break;
                     case "workingDirectory":
-                        this.WorkingDirectory = childNode.InnerText;
+                        WorkingDirectory = childNode.InnerText;
                         break;
                 }
             }

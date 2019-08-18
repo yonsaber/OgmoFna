@@ -1,16 +1,10 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content.Pipeline;
-using Microsoft.Xna.Framework.Content.Pipeline.Graphics;
-using Microsoft.Xna.Framework.Content.Pipeline.Processors;
-using Microsoft.Xna.Framework.Graphics;
-using OgmoXNAPipelineExtensions.ContentItems;
+using OgmoPipelineExtension.ContentItems;
 
-namespace OgmoXNAPipelineExtensions
+namespace OgmoPipelineExtension
 {
     [ContentProcessor(DisplayName = "Ogmo Editor Level Processor")]
     public class OelProcessor : ContentProcessor<OelContent, LevelContent>
@@ -21,11 +15,11 @@ namespace OgmoXNAPipelineExtensions
 
         public override LevelContent Process(OelContent input, ContentProcessorContext context)
         {
-            if (string.IsNullOrEmpty(this.OgmoProjectFile))
+            if (string.IsNullOrEmpty(OgmoProjectFile))
                 throw new Exception("No project file specified.");
-            if (!this.OgmoProjectFile.EndsWith(".oep"))
-                this.OgmoProjectFile += ".oep";
-            string projectPath = Path.GetFullPath(Path.Combine(input.Directory, this.OgmoProjectFile));
+            if (!OgmoProjectFile.EndsWith(".oep"))
+                OgmoProjectFile += ".oep";
+            string projectPath = Path.GetFullPath(Path.Combine(input.Directory, OgmoProjectFile));
             string projectAsset = projectPath.Remove(projectPath.LastIndexOf('.')).Substring(Directory.GetCurrentDirectory().Length + 1);
             ProjectContent projectContent = context.BuildAndLoadAsset<OepContent, ProjectContent>(
                 new ExternalReference<OepContent>(projectPath),

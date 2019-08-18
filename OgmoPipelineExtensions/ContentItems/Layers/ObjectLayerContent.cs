@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Xml;
 using System.Globalization;
-using OgmoXNAPipelineExtensions.ContentItems.Values;
+using OgmoPipelineExtension.ContentItems.Values;
 
-namespace OgmoXNAPipelineExtensions.ContentItems.Layers
+namespace OgmoPipelineExtension.ContentItems.Layers
 {
     public class ObjectLayerContent : LayerContent
     {
@@ -47,7 +45,7 @@ namespace OgmoXNAPipelineExtensions.ContentItems.Layers
                     }
                     foreach (XmlNode nodeNode in objectNode.SelectNodes("node"))
                         obj.Nodes.Add(new NodeContent(nodeNode));
-                    this.Objects.Add(obj);
+                    Objects.Add(obj);
                 }
             }
         }

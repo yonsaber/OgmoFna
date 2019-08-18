@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml;
+﻿using System.Xml;
 
-namespace OgmoXNAPipelineExtensions.ContentItems.Values
+namespace OgmoPipelineExtension.ContentItems.Values
 {
     public abstract class ValueTemplateContent
     {
@@ -17,7 +13,7 @@ namespace OgmoXNAPipelineExtensions.ContentItems.Values
         protected ValueTemplateContent(XmlNode node)
         {
             if(node.Attributes["name"] != null)
-                this.Name = node.Attributes["name"].Value;
+                Name = node.Attributes["name"].Value;
         }
     }
 }

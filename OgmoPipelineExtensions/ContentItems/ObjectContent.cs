@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Xml;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content.Pipeline;
 using Microsoft.Xna.Framework.Content.Pipeline.Graphics;
-using OgmoXNAPipelineExtensions.ContentItems.Values;
+using OgmoPipelineExtension.ContentItems.Values;
 
-namespace OgmoXNAPipelineExtensions.ContentItems
+namespace OgmoPipelineExtension.ContentItems
 {
     public class ObjectContent
     {
@@ -31,29 +28,29 @@ namespace OgmoXNAPipelineExtensions.ContentItems
 
         public ObjectContent(XmlNode node, ObjectTemplateContent template)
         {
-            this.Name = node.Name;
-            this.TextureReference = template.TextureReference;
-            this.IsTiled = template.IsTiled;
-            this.Origin = template.Origin;
-            this.Source = template.Source;
+            Name = node.Name;
+            TextureReference = template.TextureReference;
+            IsTiled = template.IsTiled;
+            Origin = template.Origin;
+            Source = template.Source;
             if (node.Attributes["height"] != null)
-                this.Height = int.Parse(node.Attributes["height"].Value, CultureInfo.InvariantCulture);
+                Height = int.Parse(node.Attributes["height"].Value, CultureInfo.InvariantCulture);
             else
-                this.Height = template.Height;
+                Height = template.Height;
             if (node.Attributes["x"] != null)
-                this.Position.X = int.Parse(node.Attributes["x"].Value, CultureInfo.InvariantCulture);
+                Position.X = int.Parse(node.Attributes["x"].Value, CultureInfo.InvariantCulture);
             if (node.Attributes["y"] != null)
-                this.Position.Y = int.Parse(node.Attributes["y"].Value, CultureInfo.InvariantCulture);
+                Position.Y = int.Parse(node.Attributes["y"].Value, CultureInfo.InvariantCulture);
             if (node.Attributes["width"] != null)
-                this.Width = int.Parse(node.Attributes["width"].Value, CultureInfo.InvariantCulture);
+                Width = int.Parse(node.Attributes["width"].Value, CultureInfo.InvariantCulture);
             else
-                this.Width = template.Width;
+                Width = template.Width;
             if (node.Attributes["angle"] != null)
-                this.Rotation = float.Parse(node.Attributes["angle"].Value, CultureInfo.InvariantCulture);
-            if (this.IsTiled)
+                Rotation = float.Parse(node.Attributes["angle"].Value, CultureInfo.InvariantCulture);
+            if (IsTiled)
             {
-                this.Source.Width = this.Width;
-                this.Source.Height = this.Height;
+                Source.Width = Width;
+                Source.Height = Height;
             }
         }
     }

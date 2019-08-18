@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
-namespace OgmoXNAPipelineExtensions
+namespace OgmoPipelineExtension
 {
     /// <summary>
     /// A helper class for <see cref="Color"/>.

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Xml;
 
-namespace OgmoXNAPipelineExtensions.ContentItems.Values
+namespace OgmoPipelineExtension.ContentItems.Values
 {
     public class NumberValueContent : ValueContent<float>
     {
@@ -12,11 +9,16 @@ namespace OgmoXNAPipelineExtensions.ContentItems.Values
         {
         }
 
+        public NumberValueContent(XmlNode node)
+            : base(node)
+        {
+        }
+
         public NumberValueContent(string name, float value)
             : base()
         {
-            this.Name = name;
-            this.Value = value;
+            Name = name;
+            Value = value;
         }
     }
 }

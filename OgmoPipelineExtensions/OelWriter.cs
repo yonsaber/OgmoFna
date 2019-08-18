@@ -1,19 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content.Pipeline;
-using Microsoft.Xna.Framework.Content.Pipeline.Graphics;
-using Microsoft.Xna.Framework.Content.Pipeline.Processors;
 using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Compiler;
-using Microsoft.Xna.Framework.Graphics;
-using OgmoXNAPipelineExtensions.ContentItems;
-using OgmoXNAPipelineExtensions.ContentItems.Values;
-using OgmoXNAPipelineExtensions.ContentItems.Layers;
-using OgmoXNAPipelineExtensions.ContentItems.Layers.Settings;
-using System.Reflection;
+using OgmoPipelineExtension.ContentItems;
+using OgmoPipelineExtension.ContentItems.Values;
+using OgmoPipelineExtension.ContentItems.Layers;
 
-namespace OgmoXNAPipelineExtensions
+namespace OgmoPipelineExtension
 {
     [ContentTypeWriter]
     public class OelWriter : ContentTypeWriter<LevelContent>
@@ -44,12 +35,12 @@ namespace OgmoXNAPipelineExtensions
 
         public override string GetRuntimeReader(TargetPlatform targetPlatform)
         {
-            return "OgmoXNA.OgmoLevelReader, OgmoXNA";
+            return "OgmoFna.OgmoLevelReader, OgmoFna";
         }
 
         public override string GetRuntimeType(TargetPlatform targetPlatform)
         {
-            return "OgmoXna.OgmoLevel, OgmoXNA";
+            return "OgmoFna.OgmoLevel, OgmoFna";
         }
     }
 }

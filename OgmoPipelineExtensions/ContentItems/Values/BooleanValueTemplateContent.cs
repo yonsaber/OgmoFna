@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml;
+﻿using System.Xml;
 
-namespace OgmoXNAPipelineExtensions.ContentItems.Values
+namespace OgmoPipelineExtension.ContentItems.Values
 {
     public class BooleanValueTemplateContent : ValueTemplateContent<bool>
     {
@@ -16,7 +12,7 @@ namespace OgmoXNAPipelineExtensions.ContentItems.Values
             : base(node)
         {
             if (node.Attributes["default"] != null)
-                this.Default = bool.Parse(node.Attributes["default"].Value);
+                Default = bool.Parse(node.Attributes["default"].Value);
         }
     }
 }

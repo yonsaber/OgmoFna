@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Compiler;
+﻿using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Compiler;
 
-namespace OgmoXNAPipelineExtensions.ContentItems.Layers.Settings
+namespace OgmoPipelineExtension.ContentItems.Layers.Settings
 {
     static class LayerSettingsContentWriter
     {

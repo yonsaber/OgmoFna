@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml;
+﻿using System.Xml;
 using Microsoft.Xna.Framework;
 using System.Globalization;
 
-namespace OgmoXNAPipelineExtensions.ContentItems
+namespace OgmoPipelineExtension.ContentItems
 {
     public class NodeContent
     {
@@ -19,9 +15,9 @@ namespace OgmoXNAPipelineExtensions.ContentItems
         public NodeContent(XmlNode node)
         {
             if (node.Attributes["x"] != null)
-                this.Position.X = int.Parse(node.Attributes["x"].Value, CultureInfo.InvariantCulture);
+                Position.X = int.Parse(node.Attributes["x"].Value, CultureInfo.InvariantCulture);
             if (node.Attributes["y"] != null)
-                this.Position.Y = int.Parse(node.Attributes["y"].Value, CultureInfo.InvariantCulture);
+                Position.Y = int.Parse(node.Attributes["y"].Value, CultureInfo.InvariantCulture);
         }
     }
 }

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Xml;
-using OgmoXNAPipelineExtensions.ContentItems.Layers.Settings;
-using OgmoXNAPipelineExtensions.ContentItems.Values;
+using OgmoPipelineExtension.ContentItems.Layers.Settings;
+using OgmoPipelineExtension.ContentItems.Values;
 
-namespace OgmoXNAPipelineExtensions.ContentItems
+namespace OgmoPipelineExtension.ContentItems
 {
     public class ProjectContent
     {
@@ -27,13 +24,13 @@ namespace OgmoXNAPipelineExtensions.ContentItems
             // Name
             XmlNode nameNode = projectNode.SelectSingleNode("name");
             if (nameNode != null)
-                this.Name = nameNode.InnerText;
+                Name = nameNode.InnerText;
             // Settings
             XmlNode settingsNode = projectNode.SelectSingleNode("settings");
             if (settingsNode != null)
-                this.Settings = new ProjectSettingsContent(settingsNode);
+                Settings = new ProjectSettingsContent(settingsNode);
             else
-                this.Settings = new ProjectSettingsContent();
+                Settings = new ProjectSettingsContent();
             // Values
             XmlNode valuesNode = projectNode.SelectSingleNode("values");
             if (valuesNode != null)
@@ -42,7 +39,7 @@ namespace OgmoXNAPipelineExtensions.ContentItems
                 {
                     ValueTemplateContent valueContent = ValueContentTemplateParser.Parse(valueNode);
                     if (valueContent != null)
-                        this.Values.Add(valueContent);
+                        Values.Add(valueContent);
                 }
             }
             // Tilesets
@@ -50,14 +47,14 @@ namespace OgmoXNAPipelineExtensions.ContentItems
             if (tilesetsNode != null)
             {
                 foreach (XmlNode childNode in tilesetsNode)
-                    this.Tilesets.Add(new TilesetContent(childNode));
+                    Tilesets.Add(new TilesetContent(childNode));
             }
             // Objects
             XmlNode objectsNode = projectNode.SelectSingleNode("objects");
             if (objectsNode != null)
             {
                 foreach (XmlNode childNode in objectsNode.SelectNodes("object|folder/object"))
-                    this.Objects.Add(new ObjectTemplateContent(childNode));
+                    Objects.Add(new ObjectTemplateContent(childNode));
             }   
             // Layer Settings
             XmlNode layerSettingsNode = projectNode.SelectSingleNode("layers");
@@ -67,7 +64,7 @@ namespace OgmoXNAPipelineExtensions.ContentItems
                 {
                     LayerSettingsContent layerSettingsContent = LayerSettingsContentParser.Parse(childNode);
                     if (layerSettingsContent != null)
-                        this.LayerSettings.Add(layerSettingsContent);
+                        LayerSettings.Add(layerSettingsContent);
                 }
             }
         }

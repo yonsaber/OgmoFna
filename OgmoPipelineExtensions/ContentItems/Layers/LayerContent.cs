@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml;
-using Microsoft.Xna.Framework.Graphics;
-using OgmoXNAPipelineExtensions.ContentItems.Layers.Settings;
+﻿using System.Xml;
 
-namespace OgmoXNAPipelineExtensions.ContentItems.Layers
+namespace OgmoPipelineExtension.ContentItems.Layers
 {
     public abstract class LayerContent
     {
@@ -18,7 +12,7 @@ namespace OgmoXNAPipelineExtensions.ContentItems.Layers
 
         public LayerContent(XmlNode node)
         {
-            this.Name = node.Name;
+            Name = node.Name;
         }
     }
 }

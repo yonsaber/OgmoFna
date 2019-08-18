@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml;
+﻿using System.Xml;
 
-namespace OgmoXNAPipelineExtensions.ContentItems.Layers.Settings
+namespace OgmoPipelineExtension.ContentItems.Layers.Settings
 {
     public class GridLayerSettingsContent : LayerSettingsContent
     {
@@ -19,10 +15,10 @@ namespace OgmoXNAPipelineExtensions.ContentItems.Layers.Settings
             : base(node)
         {
             if (node.Attributes["exportAsObjects"] != null)
-                this.ExportAsObjects = bool.Parse(node.Attributes["exportAsObjects"].Value);
+                ExportAsObjects = bool.Parse(node.Attributes["exportAsObjects"].Value);
             if (node.Attributes["newLine"] != null)
-                this.NewLine = node.Attributes["newLine"].Value;
-            this.NewLine = this.NewLine ?? "\n";                
+                NewLine = node.Attributes["newLine"].Value;
+            NewLine = NewLine ?? "\n";                
         }
     }
 }

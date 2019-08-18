@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml;
+﻿using System.Xml;
 
-namespace OgmoXNAPipelineExtensions.ContentItems.Layers.Settings
+namespace OgmoPipelineExtension.ContentItems.Layers.Settings
 {
     static class LayerSettingsNodeReader
     {

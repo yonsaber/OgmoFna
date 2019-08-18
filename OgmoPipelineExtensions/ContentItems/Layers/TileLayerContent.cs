@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Xml;
-using OgmoXNAPipelineExtensions.ContentItems.Layers.Settings;
+using OgmoPipelineExtension.ContentItems.Layers.Settings;
 
-namespace OgmoXNAPipelineExtensions.ContentItems.Layers
+namespace OgmoPipelineExtension.ContentItems.Layers
 {
     public class TileLayerContent : LayerContent
     {
@@ -27,26 +25,26 @@ namespace OgmoXNAPipelineExtensions.ContentItems.Layers
             {
                 // Just one tileset for this layer, so get it and save it.
                 if (node.Attributes["set"] != null)
-                    this.Tilesets.Add(node.Attributes["set"].Value);
+                    Tilesets.Add(node.Attributes["set"].Value);
                 if (settings.ExportTileSize)
                 {
                     if (node.Attributes["tileWidth"] != null)
-                        this.TileWidth = int.Parse(node.Attributes["tileWidth"].Value, CultureInfo.InvariantCulture);
+                        TileWidth = int.Parse(node.Attributes["tileWidth"].Value, CultureInfo.InvariantCulture);
                     if (node.Attributes["tileHeight"] != null)
-                        this.TileHeight = int.Parse(node.Attributes["tileHeight"].Value, CultureInfo.InvariantCulture);
+                        TileHeight = int.Parse(node.Attributes["tileHeight"].Value, CultureInfo.InvariantCulture);
                 }
                 else
                 {
-                    if(this.Tilesets.Count > 0) 
+                    if(Tilesets.Count > 0) 
                     {
                         // Extract the tileset so we can get the default tile width/height for the layer.
                         TilesetContent tileset = (from x in level.Project.Tilesets
-                                                  where (x.Name == this.Tilesets[0])
+                                                  where (x.Name == Tilesets[0])
                                                   select x).First<TilesetContent>();
                         if (tileset != null)
                         {
-                            this.TileWidth = tileset.TileWidth;
-                            this.TileHeight = tileset.TileHeight;
+                            TileWidth = tileset.TileWidth;
+                            TileHeight = tileset.TileHeight;
                         }
                     }
                 }
@@ -61,10 +59,10 @@ namespace OgmoXNAPipelineExtensions.ContentItems.Layers
                 string[] tilesetNames = (from x in nodes
                                          where (x.Attributes["set"] != null)
                                          select x.Attributes["set"].Value).Distinct<string>().ToArray<string>();
-                this.Tilesets.AddRange(tilesetNames);
+                Tilesets.AddRange(tilesetNames);
             }
             foreach (XmlNode tileNode in tileNodes)
-                this.Tiles.Add(new TileContent(tileNode, this, settings));
+                Tiles.Add(new TileContent(tileNode, this, settings));
         }
     }
 }

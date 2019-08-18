@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml;
+﻿using System.Xml;
 
-namespace OgmoXNAPipelineExtensions.ContentItems.Values
+namespace OgmoPipelineExtension.ContentItems.Values
 {
     public class BooleanValueContent : ValueContent<bool>
     {
@@ -13,11 +9,16 @@ namespace OgmoXNAPipelineExtensions.ContentItems.Values
         {
         }
 
+        public BooleanValueContent(XmlNode node)
+            : base(node)
+        {
+        }
+
         public BooleanValueContent(string name, bool value)
             : base()
         {
-            this.Name = name;
-            this.Value = value;
+            Name = name;
+            Value = value;
         }
     }
 }
