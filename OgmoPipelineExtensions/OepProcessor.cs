@@ -12,17 +12,19 @@ namespace OgmoPipelineExtension
         public override ProjectContent Process(OepContent input, ContentProcessorContext context)
         {
             ProjectContent projectContent = new ProjectContent(input.Document);
-            string workingDirectory = Path.GetFullPath(Path.Combine(input.Directory, projectContent.Settings.WorkingDirectory));
+            string workingDirectory = Path.GetFullPath(Path.Combine(input.Directory, projectContent.Filename, "..\\"));
             foreach (TilesetContent tileset in projectContent.Tilesets)
             {
                 string assetPath = Path.Combine(workingDirectory, tileset.TextureFile);
                 string asset = assetPath.Remove(assetPath.LastIndexOf('.')).Substring(Directory.GetCurrentDirectory().Length + 1);
-                OpaqueDataDictionary data = new OpaqueDataDictionary();
-				data.Add("GenerateMipmaps", false);
-				data.Add("ResizeToPowerOfTwo", false);
-				data.Add("TextureFormat", TextureProcessorOutputFormat.Color);
-				data.Add("ColorKeyEnabled", false);
-				data.Add("ColorKeyColor", Microsoft.Xna.Framework.Color.Magenta);
+                OpaqueDataDictionary data = new OpaqueDataDictionary
+                {
+                    { "GenerateMipmaps", false },
+                    { "ResizeToPowerOfTwo", false },
+                    { "TextureFormat", TextureProcessorOutputFormat.Color },
+                    { "ColorKeyEnabled", false },
+                    { "ColorKeyColor", Microsoft.Xna.Framework.Color.Magenta }
+                };
                 tileset.TextureReference = context.BuildAsset<TextureContent, TextureContent>(
                     new ExternalReference<TextureContent>(assetPath),
                     "TextureProcessor",
@@ -34,12 +36,14 @@ namespace OgmoPipelineExtension
             {
                 string assetPath = Path.Combine(workingDirectory, obj.TextureFile);
                 string asset = assetPath.Remove(assetPath.LastIndexOf('.')).Substring(Directory.GetCurrentDirectory().Length + 1);
-                OpaqueDataDictionary data = new OpaqueDataDictionary();
-                data.Add("GenerateMipmaps", false);
-                data.Add("ResizeToPowerOfTwo", false);
-                data.Add("TextureFormat", TextureProcessorOutputFormat.Color);
-                data.Add("ColorKeyEnabled", false);
-                data.Add("ColorKeyColor", Microsoft.Xna.Framework.Color.Magenta);
+                OpaqueDataDictionary data = new OpaqueDataDictionary
+                {
+                    { "GenerateMipmaps", false },
+                    { "ResizeToPowerOfTwo", false },
+                    { "TextureFormat", TextureProcessorOutputFormat.Color },
+                    { "ColorKeyEnabled", false },
+                    { "ColorKeyColor", Microsoft.Xna.Framework.Color.Magenta }
+                };
                 obj.TextureReference = context.BuildAsset<TextureContent, TextureContent>(
                     new ExternalReference<TextureContent>(assetPath),
                     "TextureProcessor",

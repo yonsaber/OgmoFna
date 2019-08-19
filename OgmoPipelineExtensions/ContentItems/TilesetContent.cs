@@ -19,14 +19,31 @@ namespace OgmoPipelineExtension.ContentItems
 
         public TilesetContent(XmlNode node)
         {
-            if (node.Attributes["name"] != null)
-                Name = node.Attributes["name"].Value;
-            if (node.Attributes["image"] != null)
-                TextureFile = node.Attributes["image"].Value;
-            if (node.Attributes["tileHeight"] != null)
-                TileHeight = int.Parse(node.Attributes["tileHeight"].Value, CultureInfo.InvariantCulture);
-            if (node.Attributes["tileWidth"] != null)
-                TileWidth = int.Parse(node.Attributes["tileWidth"].Value, CultureInfo.InvariantCulture);
+            XmlNode nameNode = node.SelectSingleNode("Name");
+            if (nameNode != null)
+            {
+                Name = nameNode.InnerText;
+            }
+
+            XmlNode fileNode = node.SelectSingleNode("FilePath");
+            if (fileNode != null)
+            {
+                TextureFile = fileNode.InnerText;
+            }
+
+            XmlNode sizeNode = node["TileSize"];
+
+            XmlNode heightNode = node.SelectSingleNode("Height");
+            if (heightNode != null)
+            {
+                TileHeight = int.Parse(heightNode.InnerText, CultureInfo.InvariantCulture);
+            }
+
+            XmlNode widthNode = node.SelectSingleNode("Width");
+            if (widthNode != null)
+            {
+                TileHeight = int.Parse(widthNode.InnerText, CultureInfo.InvariantCulture);
+            }
         }
     }
 }
