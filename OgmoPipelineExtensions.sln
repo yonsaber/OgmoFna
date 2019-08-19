@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OgmoPipelineExtensions", "OgmoPipelineExtensions\OgmoPipelineExtensions.csproj", "{15EC8403-7331-4065-AE02-EF3155CE25D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PipelineConsole", "PipelineConsole\PipelineConsole.csproj", "{3E37821F-6127-4D40-B35C-E6920CDCE658}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{15EC8403-7331-4065-AE02-EF3155CE25D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15EC8403-7331-4065-AE02-EF3155CE25D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15EC8403-7331-4065-AE02-EF3155CE25D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E37821F-6127-4D40-B35C-E6920CDCE658}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E37821F-6127-4D40-B35C-E6920CDCE658}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E37821F-6127-4D40-B35C-E6920CDCE658}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E37821F-6127-4D40-B35C-E6920CDCE658}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
