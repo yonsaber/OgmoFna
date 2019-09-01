@@ -1,6 +1,4 @@
 ﻿using Microsoft.Xna.Framework.Content.Pipeline;
-using Microsoft.Xna.Framework.Content.Pipeline.Graphics;
-using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Framework.Content.Pipeline.Builder;
 using OgmoPipelineExtension;
 using OgmoPipelineExtension.ContentItems;
@@ -32,7 +30,7 @@ namespace PipelineConsole
 
             OepImporter oepImporter = new OepImporter();
             OepContent oepContent = oepImporter.Import(
-                "..\\..\\..\\levels\\newProject.oep",
+                "..\\..\\levels\\new_version\\newProject.oep",
                 pipelineImporterContext
             );
 
@@ -45,7 +43,7 @@ namespace PipelineConsole
 
             OelImporter oelImporter = new OelImporter();
             OelContent oelContent = oelImporter.Import(
-                "..\\..\\..\\levels\\newLevel.oel",
+                "..\\..\\levels\\new_version\\newLevel.oel",
                 pipelineImporterContext
             );
 

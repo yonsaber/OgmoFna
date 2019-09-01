@@ -1,7 +1,7 @@
 ﻿using System.Xml;
 using System.Globalization;
 
-namespace OgmoPipelineExtension.ContentItems
+namespace OgmoPipelineExtensions.ContentItems
 {
     public class ProjectSettingsContent
     {

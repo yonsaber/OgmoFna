@@ -1,6 +1,6 @@
 ﻿using System.Xml;
 
-namespace OgmoPipelineExtension.ContentItems
+namespace OgmoPipelineExtensions.ContentItems
 {
     public class OepContent
     {

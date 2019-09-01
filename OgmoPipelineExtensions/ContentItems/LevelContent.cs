@@ -3,19 +3,14 @@ using System.Globalization;
 using System.Linq;
 using System.Xml;
 using Microsoft.Xna.Framework.Content.Pipeline;
-using OgmoPipelineExtension.ContentItems.Values;
-using OgmoPipelineExtension.ContentItems.Layers.Settings;
-using OgmoPipelineExtension.ContentItems.Layers;
 
-namespace OgmoPipelineExtension.ContentItems
+namespace OgmoPipelineExtensions.ContentItems
 {
     public class LevelContent
     {
-        public int Height;
-        public List<LayerContent> Layers = new List<LayerContent>();
         public ProjectContent Project;
         public ExternalReference<ProjectContent> ProjectReference;
-        public List<ValueContent> Values = new List<ValueContent>();
+        public int Height;
         public int Width;
 
         public LevelContent()
@@ -26,64 +21,8 @@ namespace OgmoPipelineExtension.ContentItems
         {
             Project = project;
             XmlNode levelNode = document["level"];
-            // Level values/attributes
-            foreach (ValueTemplateContent value in project.Values)
-            {
-                XmlNode attribute = null;
-                if ((attribute = levelNode.Attributes[value.Name]) != null)
-                {
-                    if (value is BooleanValueTemplateContent)
-                        Values.Add(new BooleanValueContent(value.Name, bool.Parse(attribute.Value)));
-                    else if (value is IntegerValueTemplateContent)
-                        Values.Add(new IntegerValueContent(value.Name, 
-                            int.Parse(attribute.Value, CultureInfo.InvariantCulture)));
-                    else if (value is NumberValueTemplateContent)
-                        Values.Add(new NumberValueContent(value.Name, 
-                            float.Parse(attribute.Value, CultureInfo.InvariantCulture)));
-                    else if (value is StringValueTemplateContent)
-                        Values.Add(new StringValueContent(value.Name, attribute.Value));
-                }
-            }
-            // Height
-            Height = int.Parse(levelNode.SelectSingleNode("height").InnerText, CultureInfo.InvariantCulture);
-            // Width
-            Width = int.Parse(levelNode.SelectSingleNode("width").InnerText, CultureInfo.InvariantCulture);
-            // Layers
-            // Here we'll construct an XPath query of all possible layer names so we can just extract the nodes all 
-            // at once.
-            string[] layerNames = (from x in project.LayerSettings select x.Name).ToArray<string>();
-            string layerXPath = string.Join("|", layerNames);
-            foreach (XmlNode layerNode in levelNode.SelectNodes(layerXPath))
-            {
-                // Attempt to extract the settings for this layer.
-                LayerSettingsContent[] s = (from x in project.LayerSettings
-                                            where x.Name.Equals(layerNode.Name)
-                                            select x).ToArray<LayerSettingsContent>();
-                if (!(s.Length > 0))
-                    continue;
-                LayerSettingsContent layerSettings = s[0];
-                // We have a grid layer.
-                if (layerSettings is GridLayerSettingsContent)
-                {
-                    GridLayerSettingsContent settings = layerSettings as GridLayerSettingsContent;
-                    GridLayerContent gridLayer = new GridLayerContent(layerNode, this, settings);
-                    if (gridLayer != null)
-                        Layers.Add(gridLayer);
-                }
-                else if (layerSettings is TileLayerSettingsContent)
-                {
-                    TileLayerSettingsContent settings = layerSettings as TileLayerSettingsContent;
-                    TileLayerContent tileLayer = new TileLayerContent(layerNode, this, settings);
-                    if (tileLayer != null)
-                        Layers.Add(tileLayer);
-                }
-                else if (layerSettings is ObjectLayerSettingsContent)
-                {
-                    ObjectLayerContent objectLayer = new ObjectLayerContent(layerNode, this);
-                    if(objectLayer != null)
-                       Layers.Add(objectLayer);
-                }
-            }
+            Height = int.Parse(levelNode.Attributes["height"].Value, CultureInfo.InvariantCulture);
+            Width = int.Parse(levelNode.Attributes["width"].Value, CultureInfo.InvariantCulture);
         }
     }
 }
