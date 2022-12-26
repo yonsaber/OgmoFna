@@ -7,7 +7,7 @@ I am slowly updating this to handle the latest version of the OGMO editor, which
 
 Original project(s) description:
 
-OgmoXNA is an XNA 3.1 Game Library and set of Content Pipeline Extensions for Matt Thorson's multi-platform [Ogmo Editor](http://www.ogmoeditor.com/).
+OgmoXNA is an XNA 3.1 Game Library and set of Content Pipeline Extensions for Maddy Thorson's multi-platform [Ogmo Editor](http://www.ogmoeditor.com/).
 
 Its goal is to provide neutral, consumable objects that you can use to to load your levels without having to follow a game design that isn't yours.
 
